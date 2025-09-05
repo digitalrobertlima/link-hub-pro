@@ -1,0 +1,69 @@
+/*
+  Extraído de index.html — estilo principal do app.
+  Mantém responsividade, cores e componentes.
+*/
+:root{
+  --bg:#0b0b0c; --fg:#f4f4f7; --muted:#a7a7ac; --brand:#e11d2e; --gold:#c7a74b;
+  --card:#101014; --line:#232329; --glass: rgba(255,255,255,.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:radial-gradient(1200px 800px at 20% -10%,#1b1b21 0%,#0b0b0c 60%), #0b0b0c; color:var(--fg); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;}
+.wrap{max-width:980px;margin:0 auto;padding:28px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .wrap{padding:12px}
+  h1{font-size:28px}
+  .meta{font-size:13px}
+}
+@media (max-width:480px){
+  .wrap{padding:4px}
+  h1{font-size:22px}
+  .btn{padding:8px 10px;font-size:15px}
+}
+
+/* Header */
+header{display:flex;align-items:center;gap:16px;margin:6px 0 18px}
+.avatar{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#1a1a1f,#0f0f13);display:grid;place-items:center;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.avatar b{letter-spacing:.06em}
+h1{margin:0;font-size:clamp(26px,4vw,40px);letter-spacing:.02em}
+.meta{color:var(--muted);font-size:14px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:240px 1fr;gap:22px;align-items:center}
+.cover{width:100%;aspect-ratio:1;border-radius:22px;background:linear-gradient(135deg,#141418,#0f0f12), url('');background-size:cover;background-position:center;border:1px solid var(--line); position:relative;overflow:hidden}
+.halo{position:absolute;inset:-40%;background:conic-gradient(from 210deg,transparent 0 65%,rgba(225,29,46,.18) 70% 86%,transparent 90%); filter:blur(18px);}
+.title{font-weight:700;font-size:clamp(22px,3vw,28px);margin:0}
+.sub{color:var(--muted);margin:6px 0 16px}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--fg);text-decoration:none;display:inline-flex;gap:8px;align-items:center;transition:.25s transform, .25s background}
+.btn:hover{transform:translateY(-1px);background:#15151a}
+.btn.brand{background:var(--brand);border-color:var(--brand)}
+.btn.gold{background:linear-gradient(135deg,#b99833,#e9d27a);color:#1a1200;border-color:#a88722}
+
+/* Sections */
+section{margin:28px 0}
+h2{font-size:18px;margin:0 0 12px;letter-spacing:.04em;text-transform:uppercase;color:#d7d7db}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:16px;backdrop-filter: blur(8px)}
+
+.grid{display:grid;gap:12px}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.link{display:flex;gap:10px;align-items:center;background:#0f0f12;border:1px solid var(--line);border-radius:14px;padding:10px;text-decoration:none;color:var(--fg)}
+.link:hover{border-color:#32323a}
+
+.embed{aspect-ratio:16/9;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#0f0f12}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.pill{font-size:12px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+footer{margin:30px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+.small{font-size:12px;color:var(--muted)}
+
+/* Micro-anim */
+@keyframes float { from{transform:translateY(0)} to{transform:translateY(-6px)} }
+.float{animation: float 2s ease-in-out infinite alternate}

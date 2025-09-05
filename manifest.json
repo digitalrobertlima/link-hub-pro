@@ -1,0 +1,23 @@
+{
+  "name": "Link Hub Pro",
+  "short_name": "LinkHub",
+  "description": "Hub de links, conteúdo e experiências digitais. Instale e acesse offline!",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0b0c",
+  "theme_color": "#e11d2e",
+  "orientation": "portrait",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/cover.svg",
+      "sizes": "1200x800",
+      "type": "image/svg+xml"
+    }
+  ]
+}

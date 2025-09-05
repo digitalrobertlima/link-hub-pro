@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <!--
+    ANJO — LINK HUB PRO (single‑file)
+    Autor: Robert (presente para ANJO) • v1.0.0
+    Notas:
+      - 100% estático, sem dependências externas.
+      - Pensado para DigitalOcean App Platform (Static Site — Free).
+      - Depois, você pode transformar em PWA (manifest + SW) sem quebrar nada.
+      - Marcas de edição: PROCURE por TODO:
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ANJO — Anjos & Demônios</title>
+  <meta name="description" content="ANJO (021 ZN) — Trap do Rio. Ouça o álbum Anjos & Demônios, assista aos clipes e faça booking."/>
+  <meta name="color-scheme" content="dark light">
+  <meta name="robots" content="index,follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline';">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ANJO — Anjos & Demônios" />
+  <meta property="og:description" content="Trap do RJ com estética de luxo. Ouça agora e faça booking." />
+  <meta property="og:image" content="data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='100%' height='100%' fill='%230b0b0c'/><text x='50' y='350' fill='%23e6e6ea' style='font:700 96px system-ui'>ANJO</text><text x='50' y='460' fill='%23b9b9c1' style='font:400 44px system-ui'>Anjos &amp; Demônios</text></svg>" />
+  <meta name="theme-color" content="#0b0b0c" />
+  <link rel="manifest" href="/manifest.json">
+
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+  <!--
+    Acessibilidade e Semântica:
+    - Skip link para navegação rápida por teclado.
+    - <main> para conteúdo principal.
+    - Roles e ARIA para regiões importantes.
+    - Meta color-scheme para preferências de cor do usuário.
+    - aria-label em links e botões para leitores de tela.
+  -->
+  <a href="#main-content" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;background:#e11d2e;color:#fff;z-index:1000;">Pular para conteúdo principal</a>
+  <div class="wrap">
+    <header role="banner">
+      <div class="avatar"><b>AN</b></div>
+      <!-- Se quiser usar imagem, adicione alt descritivo -->
+      <!-- <img src="assets/avatar.jpg" alt="Foto de perfil do artista ANJO" class="avatar" /> -->
+      <div>
+        <h1>ANJO</h1>
+        <div class="meta">021 · ZN · Trap RJ — Psique & eros · CEO <span class="pill">@gdn_records</span></div>
+      </div>
+    </header>
+
+    <main id="main-content" role="main">
+      <!--
+        HERO: Seção principal do álbum, com capa, título e CTAs.
+        aria-labelledby conecta o título para leitores de tela.
+      -->
+      <section class="hero card" aria-labelledby="hero-title">
+        <div class="cover"><div class="halo"></div></div>
+        <!-- Se quiser usar imagem de capa, adicione alt descritivo -->
+        <!-- <img src="assets/cover.jpg" alt="Capa do álbum Anjos & Demônios" class="cover" /> -->
+        <div>
+          <h2 class="title" id="hero-title">Anjos & Demônios</h2>
+          <p class="sub">Álbum recente. Estética urbana + luxo minimal. Ouça nas plataformas e conheça o clipe.</p>
+          <div class="cta">
+            <a class="btn brand" href="https://music.youtube.com/channel/UCSYgQNluOj5OTJJ7Tuvv3hA" target="_blank" rel="noopener" aria-label="Ouça agora no YouTube Music">Ouça agora (YT Music)</a>
+            <a class="btn" href="#links" aria-label="Ver plataformas de streaming">Plataformas</a>
+            <a class="btn gold" href="#booking" aria-label="Ir para informações de booking">Booking</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- DESTAK: CLipe -->
+      <section>
+        <h2>Clipe — Dono das Streets</h2>
+        <div class="embed">
+          <!-- TODO: cole a URL embed oficial do YouTube -->
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="Dono das Streets — ANJO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </section>
+
+      <!--
+        Smart Links: links oficiais para plataformas, todos com aria-label.
+      -->
+      <section id="links" aria-label="Smart Links oficiais">
+        <h2>Smart Links (oficiais)</h2>
+        <div class="links">
+          <a class="link" href="https://www.instagram.com/anjo.nt22" target="_blank" rel="noopener" aria-label="Instagram oficial do ANJO">📷 Instagram</a>
+          <a class="link" href="https://music.youtube.com/channel/UCSYgQNluOj5OTJJ7Tuvv3hA" target="_blank" rel="noopener" aria-label="YouTube Music oficial do ANJO">▶️ YouTube Music</a>
+          <a class="link" href="#" target="_blank" rel="noopener" aria-label="Spotify oficial do ANJO">🟢 Spotify</a>
+          <a class="link" href="#" target="_blank" rel="noopener" aria-label="Apple Music oficial do ANJO">🍎 Apple Music</a>
+          <a class="link" href="#" target="_blank" rel="noopener" aria-label="Deezer oficial do ANJO">🎧 Deezer</a>
+          <a class="link" href="#booking" aria-label="Informações de booking e feat">📩 Booking / Feat</a>
+        </div>
+      </section>
+
+      <!--
+        EPK e Beats Livres: informações para imprensa e contratantes, beats para download.
+        aria-label para contexto.
+      -->
+      <section id="booking" class="two" aria-label="EPK e Beats Livres">
+        <div class="card">
+          <h2>EPK — Press Kit</h2>
+          <p class="small">Bio curta, cidades de show, ficha técnica, press photos. Tudo pronto para imprensa e contratantes.</p>
+          <ul>
+            <li><strong>Bio:</strong> Trap 021 ZN — letras de visão cinematográfica e energia de rua.</li>
+            <li><strong>Cidades:</strong> RJ · SP · MG (tour em formação)</li>
+            <li><strong>Contato:</strong> <a href="mailto:booking@anjo.fm">booking@anjo.fm</a> · <a target="_blank" rel="noopener" href="https://wa.me/55SEUNUMERO?text=Booking%20ANJO">WhatsApp</a></li>
+            <li><strong>Press Photos:</strong> <a href="#" download>Baixar pacote</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Beats Livres (CC0)</h2>
+          <p class="small">Pacote curado para rodas de freestyle. Use à vontade — crédito opcional “ANJO”.</p>
+          <div class="grid">
+            <!-- TODO: substitua URLs de preview (src) e download (href) pelas suas (R2/DO) -->
+            <div class="row">
+              <audio controls preload="none" style="width:100%">
+                <source src="beats/mare-alta.mp3" type="audio/mpeg"/>
+              </audio>
+              <a class="btn" href="beats/mare-alta.mp3" download aria-label="Baixar beat Mare Alta">⬇️ Baixar</a>
+            </div>
+            <div class="row">
+              <audio controls preload="none" style="width:100%">
+                <source src="beats/noite-fria.mp3" type="audio/mpeg"/>
+              </audio>
+              <a class="btn" href="beats/noite-fria.mp3" download aria-label="Baixar beat Noite Fria">⬇️ Baixar</a>
+            </div>
+            <div class="row">
+              <audio controls preload="none" style="width:100%">
+                <source src="beats/torcida-instrumental.mp3" type="audio/mpeg"/>
+              </audio>
+              <a class="btn" href="beats/torcida-instrumental.mp3" download aria-label="Baixar beat Torcida Instrumental">⬇️ Baixar</a>
+            </div>
+          </div>
+          <p class="small">Licença: <strong>CC0</strong> (domínio público). Evite samplear material protegido.</p>
+        </div>
+      </section>
+
+      <!--
+        Drops Semanais: novidades e lançamentos, cada drop com botão acessível.
+      -->
+      <section aria-label="Drops Semanais">
+        <h2>Drops Semanais</h2>
+        <div class="card">
+          <div class="grid" id="drops"></div>
+        </div>
+      </section>
+    </main>
+
+    <!--
+      Footer: informações de copyright e créditos.
+      role="contentinfo" para acessibilidade.
+    -->
+    <footer role="contentinfo">
+      <div>© <span id="year"></span> ANJO — Link Hub PRO</div>
+      <div class="small">Luxo urbano minimal • Single‑file • Feito por Robert</div>
+    </footer>
+  </div>
+
+  <!-- Estruturado (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "ANJO",
+    "genre": "Trap",
+    "areaServed": "Rio de Janeiro, Brasil",
+    "memberOf": {"@type":"Organization","name":"GDN Records"},
+    "album": {
+      "@type":"MusicAlbum",
+      "name":"Anjos & Demônios",
+      "byArtist":"ANJO"
+    },
+    "sameAs": [
+      "https://www.instagram.com/anjo.nt22",
+      "https://music.youtube.com/channel/UCSYgQNluOj5OTJJ7Tuvv3hA"
+    ]
+  }
+  </script>
+
+  <script type="module" src="src/js/main.js" defer></script>
+</body>
+</html>
