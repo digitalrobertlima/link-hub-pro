@@ -1,26 +1,20 @@
 # link-hub-pro
 
-Hub de links moderno, rápido e personalizável.
+Hub de links estático com PWA. Baseado em material recebido.
 
-## Status
-Em desenvolvimento (pre-release).
+## Estrutura
+- public/: arquivos estáticos prontos para deploy
 
-## Recursos (planejados)
-- Página única com links essenciais e call-to-actions
-- Personalização de temas, cores e avatar
-- Suporte a UTM e links com parâmetros
-- Métricas básicas de cliques (cliente) e integração futura com analytics
-- Geração de QR Code para a página de links
+## Como rodar local
+- Requer Node.js 18+
 
-## Roadmap
-- [ ] Definição da stack (web estático vs. app SPA)
-- [ ] Protótipo de UI responsiva
-- [ ] Configuração de build e deploy
-- [ ] Suporte a personalização via JSON/ENV
-- [ ] Integração opcional com analytics
+```bash
+npm install
+npm run dev
+```
 
-## Contribuir
-Pull Requests são bem-vindos. Abra uma issue para discutir mudanças maiores.
+## Deploy
+Qualquer host estático (GitHub Pages, Netlify, Vercel). Basta publicar a pasta `public/` ou servir como raiz.
 
 ## Licença
-MIT © 2025 digitalrobertlima — veja o arquivo `LICENSE`.
+MIT
