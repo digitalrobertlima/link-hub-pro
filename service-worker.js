@@ -4,18 +4,18 @@
 
 const CACHE_NAME = 'linkhub-cache-v4';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/src/css/styles.css',
-  '/src/js/main.js',
-  '/data/drops.json',
-  '/assets/logo.png',
-  '/assets/cover.jpg',
-  '/assets/avatar.png',
-  '/assets/icons/icon-192.png',
-  '/assets/icons/icon-512.png',
-  '/assets/og/og-1200x630.jpg'
+  './',
+  'index.html',
+  'manifest.json',
+  'src/css/styles.css',
+  'src/js/main.js',
+  'data/drops.json',
+  'assets/logo.png',
+  'assets/cover.jpg',
+  'assets/avatar.png',
+  'assets/icons/icon-192.png',
+  'assets/icons/icon-512.png',
+  'assets/og/og-1200x630.jpg'
 ];
 
 self.addEventListener('install', event => {

@@ -30,7 +30,7 @@ function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
   window.addEventListener('load', async () => {
     try {
-      const registration = await navigator.serviceWorker.register('/service-worker.js');
+  const registration = await navigator.serviceWorker.register('service-worker.js');
       console.log('ServiceWorker registrado:', registration);
     } catch (err) {
       console.warn('ServiceWorker falhou:', err);

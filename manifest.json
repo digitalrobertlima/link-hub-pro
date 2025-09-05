@@ -23,7 +23,7 @@
   ],
   "screenshots": [
     {
-      "src": "/assets/og/og-1200x630.jpg",
+      "src": "assets/og/og-1200x630.jpg",
       "sizes": "1200x630",
       "type": "image/jpeg"
     }
