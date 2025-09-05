@@ -2,7 +2,7 @@
 // Service Worker para Link Hub Pro
 // Documentação: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
 
-const CACHE_NAME = 'linkhub-cache-v2';
+const CACHE_NAME = 'linkhub-cache-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -10,8 +10,9 @@ const ASSETS_TO_CACHE = [
   '/src/css/styles.css',
   '/src/js/main.js',
   '/data/drops.json',
-  '/assets/logo.svg',
-  '/assets/cover.svg'
+  '/assets/logo.png',
+  '/assets/cover.jpg',
+  '/assets/avatar.png'
 ];
 
 self.addEventListener('install', event => {
@@ -58,7 +59,7 @@ self.addEventListener('fetch', event => {
         return response;
       }).catch(() => {
         // fallback para imagens para a cover
-        if (event.request.destination === 'image') return caches.match('/assets/cover.svg');
+        if (event.request.destination === 'image') return caches.match('/assets/cover.jpg');
       });
     })
   );
