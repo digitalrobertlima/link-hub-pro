@@ -39,6 +39,12 @@ body{margin:0;background:radial-gradient(1200px 800px at 20% -10%,#1b1b21 0%,#0b
   /* spacing for CTA and buttons to avoid cramping */
   .cta{gap:8px}
   .cta .btn{padding:12px 14px}
+
+  .two {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 @media (max-width:480px){
   .wrap{padding:4px}
