@@ -79,10 +79,11 @@ h1{margin:0;font-size:clamp(26px,4vw,40px);letter-spacing:.02em}
 .meta{color:var(--muted);font-size:14px}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:320px 1fr;gap:22px;align-items:center}
+.hero{display:flex;flex-direction:column;gap:18px;align-items:stretch}
 .cover{width:100%;aspect-ratio:1;border-radius:22px;background:linear-gradient(135deg,#141418,#0f0f12), url('');background-size:cover;background-position:center;border:1px solid var(--line); position:relative;overflow:hidden}
 .halo{position:absolute;inset:-40%;background:conic-gradient(from 210deg,transparent 0 65%,rgba(225,29,46,.18) 70% 86%,transparent 90%); filter:blur(18px);} 
-.hero{min-height:calc(60vh - 80px)}
+/* hero agora empilha cover acima do conteúdo para manter o card dentro do mesmo "balão" */
+.hero{min-height:auto;padding:18px}
 
 /* Full-height layout helpers */
 main{flex:1;display:flex;flex-direction:column;gap:18px}
@@ -99,7 +100,11 @@ section{flex:0 0 auto}
 /* Sections */
 section{margin:28px 0}
 h2{font-size:18px;margin:0 0 12px;letter-spacing:.04em;text-transform:uppercase;color:#d7d7db}
-.card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:16px;backdrop-filter: blur(8px)}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border:1px solid var(--line);border-radius:18px;padding:12px 14px;backdrop-filter: blur(10px)}
+
+/* Dentro do hero, tratar o container como um único balão */
+.hero .cover{border-radius:14px;background-clip:padding-box}
+.hero .vertical-card{padding:12px 6px 4px 6px;background:transparent;border-radius:8px}
 
 /* Vertical album summary card (mobile-first) */
 .vertical-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:16px;border-radius:14px}
