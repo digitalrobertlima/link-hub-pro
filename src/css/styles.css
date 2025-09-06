@@ -160,6 +160,13 @@ h2{font-size:18px;margin:0 0 12px;letter-spacing:.04em;text-transform:uppercase;
 
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
+/* Mobile/touch: forçar empilhamento para evitar cards espremidos em dispositivos pequenos
+   aplicamos um breakpoint mais amplo (900px) para cobrir phones grandes e tablets em portrait */
+@media (max-width:900px){
+  .two{grid-template-columns:1fr !important;gap:14px}
+  .two .card{width:100%;min-width:0}
+}
+
 .pill{font-size:12px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
