@@ -107,6 +107,14 @@ h1{margin:0;font-size:clamp(26px,4vw,40px);letter-spacing:.02em}
 .cover.is-loaded{opacity:1;transform:scale(1);}
 .halo{z-index:0}
 
+/* Limitar altura máxima da capa em desktops para evitar ocupar a janela inteira */
+@media (min-width:961px){
+  .cover{max-height:420px;background-size:cover;background-position:center}
+}
+
+/* Placeholder background melhor adaptado */
+.cover{background-repeat:no-repeat;background-size:cover}
+
 /* Garantir que o conteúdo textual fique acima do overlay e com contraste melhor */
 .hero .vertical-card{position:relative;z-index:2;background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06));padding:18px;border-radius:12px;color:var(--fg);text-shadow:0 1px 2px rgba(0,0,0,0.45)}
 .hero .vertical-card .title{color:var(--fg)}

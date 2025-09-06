@@ -94,6 +94,24 @@ function requestClearCache() {
   }
 }
 
+function setupForceRefreshButton() {
+  const btn = document.getElementById('force-refresh');
+  if (!btn) return;
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    btn.textContent = 'Atualizando…';
+    // solicita o SW limpar cache e, após um pequeno delay, recarrega a página
+    requestClearCache();
+    setTimeout(() => {
+      // Tenta garantir que o SW esteja controlando antes de recarregar
+      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({ type: 'CLEAR_CACHE' });
+      }
+      window.location.reload(true);
+    }, 700);
+  });
+}
+
 // Forçar autoplay do iframe do YouTube (muted) quando possível
 function tryAutoplayIframe() {
   const iframe = document.querySelector('.embed iframe');
@@ -141,4 +159,5 @@ document.addEventListener('DOMContentLoaded', () => {
   registerServiceWorker();
   setupPWAInstallPrompt();
   lazyLoadCover();
+  setupForceRefreshButton();
 });
