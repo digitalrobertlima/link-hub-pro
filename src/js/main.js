@@ -57,6 +57,43 @@ function setupPWAInstallPrompt() {
   });
 }
 
+/* Lazy-load suave para o background da capa usando IntersectionObserver
+   troca data-src -> background-image e adiciona classe .is-loaded para transição */
+function lazyLoadCover() {
+  const cover = document.querySelector('.cover');
+  if (!cover) return;
+  const src = cover.getAttribute('data-src');
+  if (!src) { cover.classList.add('is-loaded'); return; }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = new Image();
+          img.src = src;
+          img.onload = () => {
+            cover.style.backgroundImage = `url('${src}')`;
+            cover.classList.add('is-loaded');
+          };
+          obs.disconnect();
+        }
+      });
+    }, {rootMargin: '200px'});
+    io.observe(cover);
+  } else {
+    // fallback imediato
+    cover.style.backgroundImage = `url('${src}')`;
+    cover.classList.add('is-loaded');
+  }
+}
+
+/* Forçar refresh de imagens no SW (envia mensagem ao SW para limpar caches) */
+function requestClearCache() {
+  if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: 'CLEAR_CACHE' });
+  }
+}
+
 // Forçar autoplay do iframe do YouTube (muted) quando possível
 function tryAutoplayIframe() {
   const iframe = document.querySelector('.embed iframe');
@@ -103,4 +140,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setYear();
   registerServiceWorker();
   setupPWAInstallPrompt();
+  lazyLoadCover();
 });

@@ -50,6 +50,35 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Para imagens: tentar network-first com timeout curto, senão usar cache (melhora atualização em celulares)
+  if (event.request.destination === 'image') {
+    const fetchTimeout = (req, ms) => new Promise((resolve) => {
+      let resolved = false;
+      const timer = setTimeout(() => {
+        if (!resolved) { resolved = true; resolve(null); }
+      }, ms);
+      fetch(req).then(r => { if (!resolved) { resolved = true; clearTimeout(timer); resolve(r); } }).catch(() => { if (!resolved) { resolved = true; clearTimeout(timer); resolve(null); } });
+    });
+
+    event.respondWith((async () => {
+      // tenta rede por 800ms
+      const networkResp = await fetchTimeout(event.request, 800);
+      if (networkResp) {
+        // atualiza cache em segundo plano
+        const copy = networkResp.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        return networkResp;
+      }
+      // se não obteve resposta rápida, tenta cache
+      const cached = await caches.match(event.request);
+      if (cached) return cached;
+      // último recurso: imagem fallback
+      return caches.match('/assets/cover.jpg');
+    })());
+    return;
+  }
+
+  // Recursos genéricos: cache-first (mantém offline e rápida resposta)
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) return cached;
@@ -61,8 +90,9 @@ self.addEventListener('fetch', event => {
         }
         return response;
       }).catch(() => {
-        // fallback para imagens para a cover
+        // fallback para imagens (caso) e documentos
         if (event.request.destination === 'image') return caches.match('/assets/cover.jpg');
+        if (event.request.destination === 'document') return caches.match('/index.html');
       });
     })
   );

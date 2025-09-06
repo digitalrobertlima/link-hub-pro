@@ -63,8 +63,9 @@
         HERO: Seção principal do álbum, com capa, título e CTAs.
         aria-labelledby conecta o título para leitores de tela.
       -->
-      <section class="hero card" aria-labelledby="hero-title">
-      <div class="cover" style="background-image: url('assets/cover.jpg')"><div class="halo"></div></div>
+  <section class="hero card" aria-labelledby="hero-title">
+  <!-- cover usa placeholder inicial (pode ser uma versão pequena) e data-src para lazy load -->
+  <div class="cover" data-src="assets/cover.jpg" style="background-image: url('assets/cover-small.jpg')"><div class="halo"></div></div>
         <!-- Se quiser usar imagem de capa, adicione alt descritivo -->
         <!-- <img src="assets/cover.jpg" alt="Capa do álbum Anjos & Demônios" class="cover" /> -->
         <div class="vertical-card">
