@@ -112,6 +112,28 @@ function setupForceRefreshButton() {
   });
 }
 
+/* Versão do site: busca version.txt e atualiza o marcador no footer.
+   Também expõe setSiteVersion() para atualizações manuais via console ou deploy hooks. */
+async function fetchSiteVersion() {
+  const el = document.getElementById('site-version');
+  if (!el) return;
+  try {
+    const res = await fetch('/version.txt', {cache: 'no-store'});
+    if (!res.ok) throw new Error('no version');
+    const text = (await res.text()).trim();
+    el.textContent = text || '—';
+  } catch (err) {
+    // fallback: usar a versão embutida no manifest ou branch
+    el.textContent = 'v0.0.3';
+  }
+}
+
+function setSiteVersion(v) {
+  const el = document.getElementById('site-version');
+  if (el) el.textContent = v;
+}
+window.setSiteVersion = setSiteVersion;
+
 // Forçar autoplay do iframe do YouTube (muted) quando possível
 function tryAutoplayIframe() {
   const iframe = document.querySelector('.embed iframe');
@@ -160,4 +182,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupPWAInstallPrompt();
   lazyLoadCover();
   setupForceRefreshButton();
+  fetchSiteVersion();
 });
