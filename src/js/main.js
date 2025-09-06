@@ -97,18 +97,18 @@ function requestClearCache() {
 function setupForceRefreshButton() {
   const btn = document.getElementById('force-refresh');
   if (!btn) return;
-  btn.addEventListener('click', (e) => {
+  btn.addEventListener('click', async (e) => {
     e.preventDefault();
     btn.textContent = 'Atualizando…';
-    // solicita o SW limpar cache e, após um pequeno delay, recarrega a página
-    requestClearCache();
-    setTimeout(() => {
-      // Tenta garantir que o SW esteja controlando antes de recarregar
-      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({ type: 'CLEAR_CACHE' });
-      }
+    try {
+      // Solicita ao SW limpar cache
+      requestClearCache();
+      await new Promise(resolve => setTimeout(resolve, 700));
       window.location.reload(true);
-    }, 700);
+    } catch (err) {
+      console.error('Erro ao forçar atualização:', err);
+      btn.textContent = 'Erro';
+    }
   });
 }
 
