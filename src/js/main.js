@@ -121,10 +121,10 @@ async function fetchSiteVersion() {
     const res = await fetch('/version.txt', {cache: 'no-store'});
     if (!res.ok) throw new Error('no version');
     const text = (await res.text()).trim();
-    el.textContent = text || '—';
+    el.textContent = text || 'v0.0.4';
   } catch (err) {
     // fallback: usar a versão embutida no manifest ou branch
-    el.textContent = 'v0.0.3';
+    el.textContent = 'v0.0.4';
   }
 }
 
