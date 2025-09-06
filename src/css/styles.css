@@ -101,6 +101,13 @@ section{margin:28px 0}
 h2{font-size:18px;margin:0 0 12px;letter-spacing:.04em;text-transform:uppercase;color:#d7d7db}
 .card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:16px;backdrop-filter: blur(8px)}
 
+/* Vertical album summary card (mobile-first) */
+.vertical-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:16px;border-radius:14px}
+.vertical-card .title{font-size:1.25rem}
+.vertical-card .sub{margin:0;color:var(--muted)}
+.vertical-card .cta{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.vertical-card .cta .btn{width:100%}
+
 .grid{display:grid;gap:12px}
 .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
 .link{display:flex;gap:10px;align-items:center;background:#0f0f12;border:1px solid var(--line);border-radius:14px;padding:10px;text-decoration:none;color:var(--fg)}
