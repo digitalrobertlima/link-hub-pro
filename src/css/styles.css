@@ -24,6 +24,33 @@ body{margin:0;background:radial-gradient(1200px 800px at 20% -10%,#1b1b21 0%,#0b
   .btn{padding:8px 10px;font-size:15px}
 }
 
+/* Mobile design improvements */
+@media (max-width:420px){
+  /* Tamanho do header e avatar menores para economizar espaço */
+  header{gap:10px;margin:6px 0 12px}
+  .avatar{width:48px;height:48px;border-radius:12px}
+
+  /* Hero ocupa mais altura, cover ocupa largura total */
+  .hero{grid-template-columns:1fr;gap:12px;align-items:start;min-height:auto}
+  .cover{width:100%;aspect-ratio:1.05;border-radius:12px}
+
+  /* Empilhar CTAs e tornar botões full-width para toque confortável */
+  .cta{flex-direction:column;align-items:stretch}
+  .btn{width:100%;text-align:center;padding:12px 14px;border-radius:12px}
+
+  /* Embed: tornar mais alto e responsivo (melhor tap targets) */
+  .embed{aspect-ratio:5/3;border-radius:12px}
+
+  /* Links em uma coluna e maior espaçamento entre items */
+  .links{grid-template-columns:1fr;gap:12px}
+
+  /* Reduzir margem geral para maximizar conteúdo visível na tela */
+  .wrap{padding:10px}
+
+  /* Footer simplificado */
+  footer{flex-direction:column;gap:8px;align-items:flex-start}
+}
+
 /* Header */
 header{display:flex;align-items:center;gap:16px;margin:6px 0 18px}
 .avatar{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#1a1a1f,#0f0f13);display:grid;place-items:center;border:1px solid var(--line);box-shadow:0 10px 40px rgba(0,0,0,.35)}
