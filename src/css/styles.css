@@ -18,6 +18,24 @@ body{margin:0;background:radial-gradient(1200px 800px at 20% -10%,#1b1b21 0%,#0b
   h1{font-size:28px}
   .meta{font-size:13px}
 }
+
+/* Force stacked hero and better spacing on small devices (avoid squeezed text) */
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;gap:18px;align-items:flex-start}
+  /* ensure cover sits above text and is visually prominent */
+  .cover{width:100%;aspect-ratio:1.15;border-radius:14px}
+
+  /* add comfortable padding around the textual column */
+  .hero > div:nth-child(2){padding:0 8px}
+
+  /* slightly larger title and line-height for readability */
+  .hero .title{font-size:1.4rem;line-height:1.2}
+  .hero .sub{font-size:0.98rem}
+
+  /* spacing for CTA and buttons to avoid cramping */
+  .cta{gap:8px}
+  .cta .btn{padding:12px 14px}
+}
 @media (max-width:480px){
   .wrap{padding:4px}
   h1{font-size:22px}
