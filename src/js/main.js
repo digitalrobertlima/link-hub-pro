@@ -57,6 +57,46 @@ function setupPWAInstallPrompt() {
   });
 }
 
+// Forçar autoplay do iframe do YouTube (muted) quando possível
+function tryAutoplayIframe() {
+  const iframe = document.querySelector('.embed iframe');
+  if (!iframe) return;
+
+  // Tenta focar e tocar via postMessage para o player (YouTube Iframe API) como fallback.
+  // Observação: navegadores geralmente permitem autoplay quando está muted.
+  // Envia comando para reproduzir caso o player aceite mensagens.
+  try {
+    // Mensagem conforme a API postMessage do player do YouTube
+    const msg = JSON.stringify({ event: 'command', func: 'playVideo' });
+    iframe.contentWindow.postMessage(msg, '*');
+  } catch (err) {
+    console.warn('Não foi possível enviar postMessage para iframe:', err);
+  }
+
+  // Opcional: adicionar botão para desmutar se o usuário quiser
+  let unmuteBtn = document.getElementById('unmute-btn');
+  if (!unmuteBtn) {
+    unmuteBtn = document.createElement('button');
+    unmuteBtn.id = 'unmute-btn';
+    unmuteBtn.textContent = 'Desmutar vídeo';
+    unmuteBtn.className = 'btn small';
+    unmuteBtn.style.position = 'fixed';
+    unmuteBtn.style.right = '12px';
+    unmuteBtn.style.bottom = '12px';
+    unmuteBtn.style.zIndex = 9999;
+    document.body.appendChild(unmuteBtn);
+    unmuteBtn.addEventListener('click', () => {
+      try {
+        // Solicita ao player para desmutar (via postMessage)
+        const msgUnmute = JSON.stringify({ event: 'command', func: 'unMute' });
+        iframe.contentWindow.postMessage(msgUnmute, '*');
+      } catch (err) {
+        console.warn('Falha ao enviar comando unMute:', err);
+      }
+      unmuteBtn.remove();
+    });
+  }
+}
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   renderDrops();
